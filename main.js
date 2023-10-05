@@ -113,10 +113,11 @@ const rollMultipleDicesJackpot = (numberOfRolls) => {
     }
 
     const isJackpot = (sixCounter === numberOfRolls);
+    const hitSix = (sixCounter > 0);
 
     if (isJackpot) {
         console.log("Jackpot 🎉");
-    } else {
+    } else if (hitSix) {
         // Assuming it's needed to console.log everytime 6 is hit
         for (let i = 0; i < sixCounter; i++) {
             console.log("You just hit 6!");
