@@ -206,27 +206,25 @@ const getCharacterFrequencies = (string) => {
 
     // Convert string to an array of lowercase characters
     const stringLowerCase = string.toLowerCase(); // H and h will be counted as the same character
-    const stringCharacters = stringLowerCase.split('');
 
     // Creating an empty Map object that will store character keys and their corresponding values
     const characterMap = new Map();
 
-    /* Iterate through stringCharacters array with forEach-loop
+    /* Iterate through stringCharacters array with for-of-loop
         if character key exists in Map, the value will be incremented by 1
         if character key does not exist in Map and is not a space, a new character key will be added with value set to 1 */
-    stringCharacters.forEach((character) => {
+    for (const character of stringLowerCase) {
         const isExistingCharacter = characterMap.has(character);
         const isSpaceCharacter = (character === " ");
 
         if (!isSpaceCharacter) {
             if (isExistingCharacter) {
-                const characterCount = characterMap.get(character);
-                characterMap.set(character, characterCount + 1);
+                characterMap.set(character, characterMap.get(character) + 1);
             } else {
                 characterMap.set(character, 1);
             }
         }
-    });
+    }
 
     // Converting Map to an array of objects to return in correct format with Array.from()
     // source: https://bobbyhadz.com/blog/javascript-convert-map-to-array-of-objects
@@ -242,7 +240,7 @@ const getCharacterFrequencies = (string) => {
 }
 
 console.log(getCharacterFrequencies('KayAk'));
-console.log(getCharacterFrequencies('ThiS is a long sentence!'))
+console.log(getCharacterFrequencies('ThiS is a long sentence!'));
 
 
 
