@@ -147,8 +147,8 @@ const getSentimentScore = (sentence) => {
         return;
     }
 
-    const positiveKeywords = ['super', 'awesome', 'happy'];
-    const negativeKeywords = ['exhausted'];
+    const positiveKeywords = new Set(['super', 'awesome', 'happy']);
+    const negativeKeywords = new Set(['exhausted']);
 
     const sentenceWords = sentence.split(" ");
 
@@ -157,10 +157,10 @@ const getSentimentScore = (sentence) => {
     let score = 0;
 
     for (const word of sentenceWords) {
-        if (positiveKeywords.includes(word)) {
+        if (positiveKeywords.has(word)) {
             positiveWords.push(word);
             score++;
-        } else if (negativeKeywords.includes(word)) {
+        } else if (negativeKeywords.has(word)) {
             negativeWords.push(word);
             score--;
         }
