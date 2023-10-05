@@ -21,12 +21,16 @@ const whatToWear = (temperature) => {
 
     let resultSentence = "";
 
-    if (temperature < 5) {
-        resultSentence = "You should wear a winter jacket";
-    } else if (temperature >= 5 && temperature < 15) {
-        resultSentence = "You should wear normal clothes with a light jacket";
-    } else if (temperature >= 15) {
-        resultSentence = "You should wear a t-shirt and shorts";
+    switch (true) {
+        case temperature < 5:
+            resultSentence = "You should wear a winter jacket";
+            break;
+        case temperature < 15:
+            resultSentence = "You should wear normal clothes with a light jacket";
+            break;
+        case temperature >= 15:
+            resultSentence = "You should wear a t-shirt and shorts";
+            break;
     }
 
     return resultSentence;
