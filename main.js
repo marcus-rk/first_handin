@@ -204,7 +204,7 @@ const getCharacterFrequencies = (string) => {
         return;
     }
 
-    // Convert string to an array of lowercase
+    // Convert string to lowercase
     // example: H and h will be counted as the same character
     const stringLowerCase = string.toLowerCase();
 
