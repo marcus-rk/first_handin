@@ -212,13 +212,15 @@ const getCharacterFrequencies = (string) => {
         if character key does not exist in Map and is not a space, a new character key will be added with value set to 1 */
     stringCharacters.forEach((character) => {
         const isExistingCharacter = characterMap.has(character);
-        const isNotSpace = (character !== " ");
+        const isSpaceCharacter = (character === " ");
 
-        if (isNotSpace && isExistingCharacter) {
-            const characterCount = characterMap.get(character);
-            characterMap.set(character, characterCount + 1);
-        } else {
-            characterMap.set(character, 1);
+        if (!isSpaceCharacter) {
+            if (isExistingCharacter) {
+                const characterCount = characterMap.get(character);
+                characterMap.set(character, characterCount + 1);
+            } else {
+                characterMap.set(character, 1);
+            }
         }
     });
 
