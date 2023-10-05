@@ -256,33 +256,33 @@ console.log("5 - Credit card number formatter");
  * @returns {Object} - An object containing the original and formatted card numbers.
  */
 const formatCreditCardNumber = (cardNumber) => {
-    const isNumber = (typeof cardNumber === 'number');
-
     // RegEx test: 16-digit number (assuming: 16 is max length and input can be 1-16 digits, as in the example code)
     const regExPattern = /^(\d{1,16})$/;
     const cardNumberAsString = cardNumber.toString();
     const isValidFormat = regExPattern.test(cardNumberAsString);
 
-    if (isNumber && isValidFormat) {
-        let formattedCardNumber = '';
-
-        for (let i = 0; i < cardNumberAsString.length; i++) {
-            const everyFourthDigit = (i % 4 === 0);
-            const firstOrLastDigit = (i === 0 || i === cardNumberAsString.length); // avoid spacing in front or after card-number
-
-            if (everyFourthDigit && !firstOrLastDigit) {
-                formattedCardNumber += " ";
-            }
-
-            formattedCardNumber += cardNumberAsString[i];
-        }
-
-        return {
-            original: cardNumber,
-            formatted: formattedCardNumber
-        }
-    } else {
+    if (!isValidFormat) {
         console.error("Error: Input should be a card number between 1-16 digits");
+        return;
+    }
+
+    let formattedCardNumber = '';
+
+    for (let i = 0; i < cardNumberAsString.length; i++) {
+        const everyFourthDigit = (i % 4 === 0);
+        const firstOrLastDigit = (i === 0 || i === cardNumberAsString.length); // avoid spacing in front or after card-number
+        const insertSpace = everyFourthDigit && !firstOrLastDigit;
+
+        if (insertSpace) {
+            formattedCardNumber += " ";
+        }
+
+        formattedCardNumber += cardNumberAsString[i];
+    }
+
+    return {
+        original: cardNumber,
+        formatted: formattedCardNumber
     }
 }
 
