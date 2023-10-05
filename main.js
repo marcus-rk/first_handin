@@ -204,13 +204,14 @@ const getCharacterFrequencies = (string) => {
         return;
     }
 
-    // Convert string to an array of lowercase characters
-    const stringLowerCase = string.toLowerCase(); // H and h will be counted as the same character
+    // Convert string to an array of lowercase
+    // example: H and h will be counted as the same character
+    const stringLowerCase = string.toLowerCase();
 
     // Creating an empty Map object that will store character keys and their corresponding values
     const characterMap = new Map();
 
-    /* Iterate through stringCharacters array with for-of-loop
+    /* Iterate through stringLowerCase with for-of-loop
         if character key exists in Map, the value will be incremented by 1
         if character key does not exist in Map and is not a space, a new character key will be added with value set to 1 */
     for (const character of stringLowerCase) {
