@@ -272,8 +272,8 @@ const formatCreditCardNumber = (cardNumber) => {
 
     for (let i = 0; i < cardNumberAsString.length; i++) {
         const everyFourthDigit = (i % 4 === 0);
-        const firstOrLastDigit = (i === 0 || i === cardNumberAsString.length); // avoid spacing in front or after card-number
-        const insertSpace = everyFourthDigit && !firstOrLastDigit;
+        const firstDigit = (i === 0); // avoid spacing in front of cardnumber
+        const insertSpace = everyFourthDigit && !firstDigit;
 
         if (insertSpace) {
             formattedCardNumber += " ";
